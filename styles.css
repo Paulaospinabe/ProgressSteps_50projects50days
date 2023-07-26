@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding-left: 350px;
+    padding-right: 350px;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .progresoContainer {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    
+  }
+
+  :root {  /*Es un selector y parecido al <html>*/
+    --line-border-fill: #3eb1f3;  
+    --line-border-empty: #94e1ff;
+  
+  }
+  
+  .progresoContainer::before {  /*Aguega contenido antes de un elemento, aqui se agrega el borde o linea de color antes*/
+    content: '';  /*Agrega contenido al html, donde esta el div sin nada*/
+    background-color: var(--line-border-empty);  /*Se complementa con el :root*/
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 5px;
+    width: 100%;
+    z-index: -1;  /*Orden del elemento, descendiente o ascendente, la linea queda debajo de los circulos*/
+  }
+  
+  .progreso {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 5px;
+    width: 0%;
+    z-index: -1;
+    transition: 0.5s ease; /*Animacion del color*/
+  }
+  
+  .nivel {
+    background-color: #ffffff;
+    color:rgb(136, 133, 133);
+    border-radius: 55%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: 0.5s ease;
+    font-family: 'PT Sans', sans-serif;
+  }
+  
+  .nivel.active {
+    border-color: var(--line-border-fill); /*Se deja con el color definido al primer nivel, es decir el que siemore esta activo*/
+  }
+  
+  .btn {
+    cursor: pointer;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+    cursor: not-allowed;
+  }
+  
+  .btn:focus {
+    outline: 0;
+  }
+  
+  .btn:disabled {
+    cursor: not-allowed;
+  }
